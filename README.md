@@ -4,12 +4,16 @@ Android 水波纹效果
 ![RippleEffect GIF](./demo.gif)
 ##USAGE
 ``` 
- <com.czc.max.library.RippleView
+<com.czc.max.library.RippleView
+        android:id="@+id/rippleView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:rb_animation_interval="3000"
-        app:rb_circle_color="#FF9900"
-        app:rb_circle_radius="40dp" />
+        app:rb_content_circle_radius="40dp"/>
+```
+start animation:
+```
+ rippleView = ((RippleView) findViewById(R.id.rippleView));
+ rippleView.start();
 ```
 
 
