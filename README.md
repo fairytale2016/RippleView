@@ -15,5 +15,8 @@ start animation:
  rippleView = ((RippleView) findViewById(R.id.rippleView));
  rippleView.start();
 ```
-
+pause animation:
+```
+ rippleView.pauseAnimation();
+```
 
