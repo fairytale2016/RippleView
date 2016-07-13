@@ -17,6 +17,6 @@ start animation:
 ```
 pause animation:
 ```
- rippleView.pauseAnimation();
+ rippleView.pause();
 ```
 
