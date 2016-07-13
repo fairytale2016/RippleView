@@ -24,9 +24,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onPause() {
         super.onPause();
         if (rippleView1 != null)
-            rippleView1.pauseAnimation();
+            rippleView1.pause();
         if (rippleView2 != null)
-            rippleView2.pauseAnimation();
+            rippleView2.pause();
     }
 
     @Override

@@ -115,7 +115,7 @@ public class RippleView extends View implements Runnable {
         runDelay = 0;
     }
 
-    public void pauseAnimation() {
+    public void pause() {
         if (!isAnimationStart || thread == null)
             return;
         thread.interrupt();
