@@ -12,7 +12,7 @@ Android 水波纹效果
 ```
 start animation:
 ```
- rippleView = ((RippleView) findViewById(R.id.rippleView));
+ rippleView = (RippleView) findViewById(R.id.rippleView);
  rippleView.start();
 ```
 pause animation:
