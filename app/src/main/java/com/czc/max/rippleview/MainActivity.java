@@ -7,27 +7,34 @@ import com.czc.max.library.RippleView;
 
 public class MainActivity extends AppCompatActivity {
 
-    private RippleView rippleView;
+    private RippleView rippleView1;
+    private RippleView rippleView2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        rippleView = ((RippleView) findViewById(R.id.rippleView));
-        rippleView.start();
+        rippleView1 = ((RippleView) findViewById(R.id.rippleView1));
+        rippleView1.start();
+        rippleView2 = ((RippleView) findViewById(R.id.rippleView2));
+        rippleView2.start();
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        if (rippleView != null)
-            rippleView.pauseAnimation();
+        if (rippleView1 != null)
+            rippleView1.pauseAnimation();
+        if (rippleView2 != null)
+            rippleView2.pauseAnimation();
     }
 
     @Override
     protected void onRestart() {
         super.onRestart();
-        if (rippleView != null)
-            rippleView.start();
+        if (rippleView1 != null)
+            rippleView1.start();
+        if (rippleView2 != null)
+            rippleView2.start();
     }
 }

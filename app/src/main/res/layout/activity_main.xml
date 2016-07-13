@@ -5,13 +5,23 @@
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
     tools:context="com.czc.max.rippleview.MainActivity">
 
     <com.czc.max.library.RippleView
-        android:id="@+id/rippleView"
+        android:id="@+id/rippleView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:rb_content_circle_radius="40dp"/>
+        app:rb_circle_radius="40dp" />
+
+    <com.czc.max.library.RippleView
+        android:id="@+id/rippleView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:rb_animation_interval="3000"
+        app:rb_circle_color="#FF9900"
+        app:rb_circle_radius="40dp" />
 
 
 </LinearLayout>

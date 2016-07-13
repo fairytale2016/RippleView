@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <declare-styleable name="RippleView">
-        <attr name="rb_content_circle_radius" format="dimension"/>
+        <attr name="rb_circle_radius" format="dimension"/>
         <attr name="rb_animation_interval" format="integer"/>
+        <attr name="rb_circle_color" format="color"/>
     </declare-styleable>
 </resources>

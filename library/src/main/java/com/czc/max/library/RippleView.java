@@ -36,8 +36,9 @@ public class RippleView extends View implements Runnable {
     private float circleOneScale = 1;
     private float circleTwoScale = 1;
 
-    private int contentCircleRadius;
+    private int circleRadius;
     private int interval;//ms
+    private int circleColor;
     private boolean isAnimationStart;
     private Thread thread;
 
@@ -64,9 +65,10 @@ public class RippleView extends View implements Runnable {
     public RippleView(Context context, AttributeSet attrs) {
         super(context, attrs);
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.RippleView);
-        contentCircleRadius = typedArray.getDimensionPixelSize(R.styleable.RippleView_rb_content_circle_radius
+        circleRadius = typedArray.getDimensionPixelSize(R.styleable.RippleView_rb_circle_radius
                 , DEFAULT_CONTENT_CIRCLE_RADIUS);
         interval = typedArray.getInt(R.styleable.RippleView_rb_animation_interval, 1000);
+        circleColor = typedArray.getColor(R.styleable.RippleView_rb_circle_color, Color.parseColor("#55AAFF"));
         typedArray.recycle();
         initPaint();
     }
@@ -74,12 +76,12 @@ public class RippleView extends View implements Runnable {
     private void initPaint() {
         contentCirclePaint = new Paint();
         contentCirclePaint.setAntiAlias(true);
-        contentCirclePaint.setColor(Color.parseColor("#55AAFF"));
+        contentCirclePaint.setColor(circleColor);
         circleOnePaint = new Paint();
-        circleOnePaint.setColor(Color.parseColor("#55AAFF"));
+        circleOnePaint.setColor(circleColor);
         circleOnePaint.setAntiAlias(true);
         circleTwoPaint = new Paint();
-        circleTwoPaint.setColor(Color.parseColor("#55AAFF"));
+        circleTwoPaint.setColor(circleColor);
         circleTwoPaint.setAntiAlias(true);
     }
 
@@ -91,9 +93,9 @@ public class RippleView extends View implements Runnable {
         h = getMeasuredHeight();
         circleOnePaint.setAlpha(circleOneAlpha);
         circleTwoPaint.setAlpha(circleTwoAlpha);
-        canvas.drawCircle(w / 2, h / 2, contentCircleRadius * circleOneScale, circleOnePaint);
-        canvas.drawCircle(w / 2, h / 2, contentCircleRadius * circleTwoScale, circleTwoPaint);
-        canvas.drawCircle(w / 2, h / 2, contentCircleRadius, contentCirclePaint);
+        canvas.drawCircle(w / 2, h / 2, circleRadius * circleOneScale, circleOnePaint);
+        canvas.drawCircle(w / 2, h / 2, circleRadius * circleTwoScale, circleTwoPaint);
+        canvas.drawCircle(w / 2, h / 2, circleRadius, contentCirclePaint);
     }
 
     public void start() {
@@ -123,14 +125,6 @@ public class RippleView extends View implements Runnable {
         invalidate();
     }
 
-    public void setContentCircleColor(int color) {
-        contentCirclePaint.setColor(color);
-        circleOnePaint.setColor(color);
-        circleTwoPaint.setColor(color);
-        invalidate();
-    }
-
-
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
@@ -143,12 +137,12 @@ public class RippleView extends View implements Runnable {
         if (widthMode == MeasureSpec.EXACTLY) {
             w = width;
         } else {
-            w = (int) (contentCircleRadius * 2 + contentCircleRadius * 2 * 0.8f + getPaddingLeft() + getPaddingRight());
+            w = (int) (circleRadius * 2 + circleRadius * 2 * 0.8f + getPaddingLeft() + getPaddingRight());
         }
         if (heightMode == MeasureSpec.EXACTLY) {
             h = height;
         } else {
-            h = (int) (contentCircleRadius * 2 + contentCircleRadius * 2 * 0.8f + getPaddingBottom() + getPaddingTop());
+            h = (int) (circleRadius * 2 + circleRadius * 2 * 0.8f + getPaddingBottom() + getPaddingTop());
         }
         setMeasuredDimension(w, h);
     }
